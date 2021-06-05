@@ -22,7 +22,7 @@ namespace PizzaShop
             Crust = crust;
             if(crust == "pan")
             {
-                WriteLine("For the bread love in all of us!");
+                WriteLine("For the bread lover in all of us!");
                 return "pan";
             }
             else if(crust == "thin")
@@ -33,7 +33,7 @@ namespace PizzaShop
             else
             {
                 WriteLine("The tried and true.");
-                return "hand-Tossed";
+                return "hand-tossed";
             }
         }
 

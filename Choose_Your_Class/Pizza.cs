@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using static System.Console;
 
 namespace PizzaShop
@@ -9,62 +10,69 @@ namespace PizzaShop
         public string Crust { get; set; }
         public string Sauce { get; set; }
         public string Cheese { get; set; }
-        public string Meat { get; set; }
-        public string Veggie { get; set; }
-        public string Sides { get; set; }
+        public List<Toppings> Toppings { get; } = new List<Toppings>();
 
         // create methods that implement properties
-        public Pizza() { }
+        public Pizza() 
+        {
+            Crust = "hand-tossed";
+            Sauce = "marinara";
+            Cheese = "regular cheese";
+        }
 
         // sets crust type
-        public string CrustType(string crust)
+        public void CrustType(string crust)
         {
             Crust = crust;
             if(crust == "pan")
             {
-                WriteLine("For the bread lover in all of us!");
-                return "pan";
+                WriteLine("Pan crust it is for the bread lover in all of us!");
             }
             else if(crust == "thin")
             {
-                WriteLine("Crispy, crunchy goodness!");
-                return "thin";
+                WriteLine("Thin crust crispy, crunchy goodness!");
             }
             else
             {
-                WriteLine("The tried and true.");
-                return "hand-tossed";
+                Crust = "hand-tossed";
+                WriteLine("Hand-tossed, the tried and true.");
             }
         }
 
-        public string SauceType(string sauce)
-        {
-            Sauce = sauce;
-            if(sauce == "white sauce")
-            {
-                return "white sauce";
-            }
-            return "marinara";
-        }
-
-        public string CheeseLevel(string cheese)
+        public void CheeseLevel(string cheese)
         {
             Cheese = cheese;
             if(cheese == "light cheese")
             {
-                return "light cheese";
+                WriteLine("Light cheese it is.");
             }
             else if(cheese == "extra cheesy")
             {
-                return "extra cheesy";
+                WriteLine("Oh that extra cheesy goodness!");
             }
-            return "regular cheese";
+            Cheese = "regular cheese";
+            WriteLine("It really is the right amount.");
         }
 
-        public string MeatToppings(string meat)
+        public void SauceType(string sauce)
         {
-            Meat = meat;
-            return "italian sausage";
+            Sauce = sauce;
+            if (sauce == "white sauce")
+            {
+                WriteLine("Garlicky, tasty goodness!");
+            }
+            Sauce = "marinara";
+            WriteLine("Keep it saucy, my friend!");
+        }
+
+        public void AddTopping(Toppings newTopping)
+        {
+            Toppings.Add(newTopping);
+        }
+
+        public override string ToString()
+        {
+            return $"This pizza has {Crust} crust, is {Cheese}, with {Sauce}, and comes with {string.Join(", ", Toppings.Select(x => x.ToppingName))}";
         }
 
     }

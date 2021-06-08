@@ -21,28 +21,27 @@ namespace PizzaShop.Tests
         }
 
         [Fact]
-        public void SauceType_Should_Return_White_Sauce()
+        public void CrustType_Should_Return_Default_Crust_If_Crust_Is_Not_Specified()
         {
-            testPizza.SauceType("white sauce");
+            testPizza.CrustType(string.Empty);
 
-            Assert.Equal("white sauce", testPizza.Sauce);
+            Assert.Equal("hand-tossed", testPizza.Crust);
         }
 
         [Fact]
-        public void CheeseLevel_Should_Return_Extra_Cheese()
+        public void SauceType_Should_Return_Default_Sauce_If_Sauce_Is_Not_Specified()
         {
-            testPizza.CheeseLevel("extra cheesy");
+            testPizza.SauceType(string.Empty);
 
-            Assert.Equal("extra cheesy", testPizza.Cheese);
+            Assert.Equal("marinara", testPizza.Sauce);
         }
 
         [Fact]
-        public void MeatToppings_Should_Return_Italian_Sausage()
+        public void CheeseLevel_Should_Return_Default_Cheese_If_Cheese_Is_Not_Specified()
         {
-            testPizza.MeatToppings("italian sausage");
+            testPizza.CheeseLevel(string.Empty);
 
-            Assert.Equal("italian sausage", testPizza.Meat);
+            Assert.Equal("regular cheese", testPizza.Cheese);
         }
-
     }
 }
